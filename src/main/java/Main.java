@@ -32,7 +32,6 @@ public class Main {
             }
         }
 
-
         // add symbols to list for find x and y
         for (int i = 0; i < arithmeticExpression.length(); i++) {
             list.add(String.valueOf(arithmeticExpression.charAt(i)));
@@ -84,10 +83,8 @@ public class Main {
         for (String s : list) {
             sb.append(s);
         }
+
         arithmeticExpression=sb.toString();
-
-
-
         System.out.println(arithmeticExpression);
         System.out.println(Evaluate.eval(arithmeticExpression));
 

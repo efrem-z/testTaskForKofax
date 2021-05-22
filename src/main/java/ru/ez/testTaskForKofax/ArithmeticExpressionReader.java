@@ -1,3 +1,5 @@
+package ru.ez.testTaskForKofax;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class ArithmeticExpressionReader {
 
     public void read() {
         System.out.println("enter arithmetic expression");
-        System.out.println("use only: 0-9,+-*/,x,y()");
+        System.out.println("use only: 0-9 +-*/. x y ()");
         readArithmeticExpression();
         readX();
         readY();
@@ -23,7 +25,7 @@ public class ArithmeticExpressionReader {
         }
         arithmeticExpression=sb.toString();
 //        System.out.println(arithmeticExpression);
-        System.out.println(Evaluate.eval(arithmeticExpression));
+        System.out.println("Result is: " + Evaluate.eval(arithmeticExpression));
     }
 
     private void readArithmeticExpression() {
@@ -31,7 +33,7 @@ public class ArithmeticExpressionReader {
             try {
                 arithmeticExpression = reader.readLine().replaceAll(" ", "");
                 for (int i = 0; i < arithmeticExpression.length(); i++) {
-                    if (String.valueOf(arithmeticExpression.charAt(i)).matches("[^0-9+*/()xy-]")) {
+                    if (String.valueOf(arithmeticExpression.charAt(i)).matches("[^0-9+*/()xy.-]")) {
                         throw new IllegalArgumentException();
                     }
                 }
@@ -39,7 +41,7 @@ public class ArithmeticExpressionReader {
                 break;
             } catch (Exception e) {
                 System.out.println("wrong arithmetic expression");
-                System.out.println("use only: 0-9,+-*/,x,y()");
+                System.out.println("use only: 0-9 +-*/. x y ()");
             }
         }
         // add symbols to list for find x and y
@@ -48,12 +50,11 @@ public class ArithmeticExpressionReader {
         }
     }
 
-
     private void readX() {
         while (true) {
             try {
                 x = reader.readLine();
-                if (x.matches("[^0-9]")) {
+                if (x.matches("[^0-9.]")) {
                     throw new IllegalArgumentException();
                 } else {
                     for (int i = 0; i < list.size(); i++) {
@@ -75,7 +76,7 @@ public class ArithmeticExpressionReader {
         while (true) {
             try {
                 y = reader.readLine();
-                if (y.matches("[^0-9]")) {
+                if (y.matches("[^0-9.]")) {
                     throw new IllegalArgumentException();
                 } else {
                     for (int i = 0; i < list.size(); i++) {
@@ -92,7 +93,5 @@ public class ArithmeticExpressionReader {
             }
         }
     }
-
-
 
 }

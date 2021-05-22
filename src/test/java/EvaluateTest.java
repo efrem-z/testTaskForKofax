@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import ru.ez.testTaskForKofax.Evaluate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +12,7 @@ class EvaluateTest {
         String s3 = "1235 / 15 * 3";
         String s4 = "(12 + 17) * 23 + 6";
         String s5 = "23 / (524 * 2) / (10 * 367 * 1000)";
-        assertEquals(15,Evaluate.eval(s1));
+        assertEquals(15, Evaluate.eval(s1));
         assertEquals(13,Evaluate.eval(s2));
         assertEquals(247,Evaluate.eval(s3));
         assertEquals(673,Evaluate.eval(s4));
